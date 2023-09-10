@@ -1,58 +1,70 @@
-import { DataGrid } from "@mui/x-data-grid";
-import "./style.css";
+import { DataGrid } from '@mui/x-data-grid';
+import './style.css';
 
-import useGetAllPoksWithPower from "../../hooks/useGetAllPoksWithPower";
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import {
+  filteredPokList,
+  pageMetaData,
+  poksListState,
+} from '../../recoil_state';
 
 const columns = [
-  { field: "id", headerName: "ID", width: 90 },
-  { field: "name", headerName: "name", width: 200 },
-  { field: "type", headerName: "type", width: 200 },
-  { field: "hp", headerName: "health", type: "number", width: 120 },
+  { field: 'id', headerName: 'ID', minWidth: 90, flex: 1 },
+  { field: 'name', headerName: 'name', minWidth: 200, flex: 1 },
+  { field: 'type', headerName: 'type', minWidth: 200, flex: 1 },
+  { field: 'hp', headerName: 'health', type: 'number', minWidth: 120, flex: 1 },
   {
-    field: "attack",
-    headerName: "attack",
-    type: "number",
-    width: 120,
+    field: 'attack',
+    headerName: 'attack',
+    type: 'number',
+    minWidth: 120,
+    flex: 1,
   },
   {
-    field: "defense",
-    headerName: "defense",
-    type: "number",
-    width: 130,
+    field: 'defense',
+    headerName: 'defense',
+    type: 'number',
+    minWidth: 130,
+    flex: 1,
   },
   {
-    field: "special_attack",
-    headerName: "special_attack",
-    type: "number",
-    width: 160,
+    field: 'special_attack',
+    headerName: 'special_attack',
+    type: 'number',
+    minWidth: 160,
+    flex: 1,
   },
   {
-    field: "special_defense",
-    headerName: "special_defense",
-    type: "number",
-    width: 180,
+    field: 'special_defense',
+    headerName: 'special_defense',
+    type: 'number',
+    minWidth: 180,
+    flex: 1,
   },
   {
-    field: "speed",
-    headerName: "speed",
-    type: "number",
-    width: 120,
+    field: 'speed',
+    headerName: 'speed',
+    type: 'number',
+    minWidth: 120,
+    flex: 1,
   },
   {
-    field: "power",
-    headerName: "power",
-    type: "number",
-    width: 120,
+    field: 'power',
+    headerName: 'power',
+    type: 'number',
+    minWidth: 120,
+    flex: 1,
   },
 ];
 
 export default function DataTable() {
-  const finalPoksList = useGetAllPoksWithPower();
+  const poksList = useRecoilValue(filteredPokList);
+  const setPageMetaData = useSetRecoilState(pageMetaData);
 
   return (
-    <div className="table-container">
+    <div className='table-container'>
       <DataGrid
-        rows={finalPoksList}
+        rows={poksList}
         columns={columns}
         initialState={{
           pagination: {
@@ -60,6 +72,9 @@ export default function DataTable() {
           },
         }}
         pageSizeOptions={[5, 10, 15, 20]}
+        onStateChange={(e) => {
+          setPageMetaData(e.pagination.paginationModel);
+        }}
       />
     </div>
   );
