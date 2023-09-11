@@ -1,15 +1,26 @@
-/* eslint-disable react/prop-types */
-
 import { InputAdornment, TextField } from '@mui/material';
 import { useSetRecoilState } from 'recoil';
-import { pokFilterValue } from '../recoil_state';
+import { pokFilterValue } from '../recoil_state.ts';
+import { ChangeEvent, ReactNode } from 'react';
 
-const CustomInput = ({ placeHolder, icon, isTypeNumber }) => {
+const CustomInput = ({
+  placeHolder,
+  icon,
+  isTypeNumber,
+}: {
+  placeHolder: string;
+  icon: ReactNode;
+  isTypeNumber: boolean;
+}) => {
   const setFiltredPokList = useSetRecoilState(pokFilterValue);
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFiltredPokList(
-      !isTypeNumber || isNaN(e.target.value) ? e.target.value : +e.target.value
+      !isTypeNumber || isNaN(e.target.value as unknown as number)
+        ? e.target.value
+        : +e.target.value
     );
   };
   return (

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { DataGrid } from '@mui/x-data-grid';
 import './style.css';
 
@@ -57,7 +59,7 @@ export default function DataTable() {
   const poksList = useRecoilValue(filteredPokList);
   const setPageMetaData = useSetRecoilState(pageMetaData);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setPageMetaData(e.pagination.paginationModel);
   };
 

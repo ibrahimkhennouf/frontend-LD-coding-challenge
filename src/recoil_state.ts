@@ -1,11 +1,23 @@
 import { atom, selector } from 'recoil';
 
-const poksListState = atom({
+export interface Pokemon {
+  name: string;
+  type: Array<string>;
+  hp: number;
+  attack: number;
+  defense: number;
+  special_attack: number;
+  special_defense: number;
+  speed: number;
+  power: number;
+}
+
+const poksListState = atom<Pokemon[]>({
   key: 'poksListState',
   default: fetch('/pokemon.json')
     .then((res) => res.json())
     .then((data) =>
-      data.map((pok) => ({
+      data.map((pok: Pokemon) => ({
         ...pok,
         power:
           pok.hp +
@@ -23,7 +35,7 @@ const pageMetaData = atom({
   default: { page: 0, pageSize: 5 },
 });
 
-const pokFilterValue = atom({
+const pokFilterValue = atom<string | number>({
   key: 'pokFilterValue',
   default: '',
 });
@@ -35,9 +47,9 @@ const filteredPokList = selector({
     const filterValue = get(pokFilterValue);
 
     if (typeof filterValue === 'string') {
-      return list.filter((pok) => pok.name.includes(filterValue));
+      return list.filter((pok: Pokemon) => pok.name.includes(filterValue));
     } else {
-      return list.filter((pok) => pok.power >= filterValue);
+      return list.filter((pok: Pokemon) => pok.power >= filterValue);
     }
   },
 });
