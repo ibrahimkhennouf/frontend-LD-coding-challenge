@@ -2,11 +2,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import './style.css';
 
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import {
-  filteredPokList,
-  pageMetaData,
-  poksListState,
-} from '../../recoil_state';
+import { filteredPokList, pageMetaData } from '../../recoil_state';
 
 const columns = [
   { field: 'id', headerName: 'ID', minWidth: 90, flex: 1 },
@@ -61,8 +57,12 @@ export default function DataTable() {
   const poksList = useRecoilValue(filteredPokList);
   const setPageMetaData = useSetRecoilState(pageMetaData);
 
+  const handleChange = (e) => {
+    setPageMetaData(e.pagination.paginationModel);
+  };
+
   return (
-    <div className='table-container'>
+    <div className='table--container'>
       <DataGrid
         rows={poksList}
         columns={columns}
@@ -72,9 +72,7 @@ export default function DataTable() {
           },
         }}
         pageSizeOptions={[5, 10, 15, 20]}
-        onStateChange={(e) => {
-          setPageMetaData(e.pagination.paginationModel);
-        }}
+        onStateChange={handleChange}
       />
     </div>
   );

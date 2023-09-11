@@ -21,13 +21,13 @@ const inpData = [
 function SearchBar() {
   const { max, min } = useGetMinMaxPower();
   return (
-    <div className='searchBar'>
-      <div className='searchBar_inp'>
+    <div className='search-Bar'>
+      <div className='searchBar--inp'>
         {inpData.map((data, i) => {
           return <CustomInput {...data} key={i} />;
         })}
       </div>
-      <div className='searchBar_power-txt'>
+      <div className='searchBar--powerTxt'>
         <p>Min power : {min != Infinity ? min : 0}</p>
         <p>Max power : {max != -Infinity ? max : 0}</p>
       </div>

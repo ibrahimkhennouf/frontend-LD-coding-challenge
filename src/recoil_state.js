@@ -4,20 +4,18 @@ const poksListState = atom({
   key: 'poksListState',
   default: fetch('/pokemon.json')
     .then((res) => res.json())
-    .then((data) => {
-      return data.map((pok) => {
-        return {
-          ...pok,
-          power:
-            pok.hp +
-            pok.attack +
-            pok.defense +
-            pok.special_attack +
-            pok.special_defense +
-            pok.speed,
-        };
-      });
-    }),
+    .then((data) =>
+      data.map((pok) => ({
+        ...pok,
+        power:
+          pok.hp +
+          pok.attack +
+          pok.defense +
+          pok.special_attack +
+          pok.special_defense +
+          pok.speed,
+      }))
+    ),
 });
 
 const pageMetaData = atom({

@@ -6,7 +6,9 @@ const CustomInput = ({ placeHolder, icon, isTypeNumber }) => {
   const setFiltredPokList = useSetRecoilState(pokFilterValue);
 
   const handleChange = (e) => {
-    setFiltredPokList(isNaN(e.target.value) ? e.target.value : +e.target.value);
+    setFiltredPokList(
+      !isTypeNumber || isNaN(e.target.value) ? e.target.value : +e.target.value
+    );
   };
   return (
     <>
