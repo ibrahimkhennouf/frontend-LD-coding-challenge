@@ -1,4 +1,3 @@
-import React from 'react';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CustomInput from '../../shared/CustomInput';

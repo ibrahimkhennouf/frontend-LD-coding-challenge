@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import { InputAdornment, TextField } from '@mui/material';
 import { useSetRecoilState } from 'recoil';
 import { pokFilterValue } from '../recoil_state';
