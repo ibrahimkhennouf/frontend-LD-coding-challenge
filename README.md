@@ -2,7 +2,7 @@
 
 This is the solution for the LD front end challenge.
 
-# PS:
+# PS
 please note that there is 2 branches the main branch with typescript the other is with JS.
 
 # instructions
