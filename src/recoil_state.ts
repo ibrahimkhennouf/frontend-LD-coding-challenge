@@ -1,4 +1,5 @@
 import { atom, selector } from 'recoil';
+import { filterPok } from './utils';
 
 export interface Pokemon {
   name: string;
@@ -35,22 +36,18 @@ const pageMetaData = atom({
   default: { page: 0, pageSize: 5 },
 });
 
-const pokFilterValue = atom<string | number>({
+const pokFilterValue = atom<{ name: string; val: string | number }>({
   key: 'pokFilterValue',
-  default: '',
+  default: { name: 'name', val: '' },
 });
 
 const filteredPokList = selector({
   key: 'filteredPokList',
   get: ({ get }) => {
     const list = get(poksListState);
-    const filterValue = get(pokFilterValue);
+    const { name, val } = get(pokFilterValue);
 
-    if (typeof filterValue === 'string') {
-      return list.filter((pok: Pokemon) => pok.name.includes(filterValue));
-    } else {
-      return list.filter((pok: Pokemon) => pok.power >= filterValue);
-    }
+    return filterPok(list, name, val);
   },
 });
 

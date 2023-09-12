@@ -9,11 +9,13 @@ const inpData = [
     placeHolder: 'Search...',
     icon: <SearchOutlinedIcon />,
     isTypeNumber: false,
+    name: 'name',
   },
   {
     placeHolder: 'Power threshold',
     icon: <FavoriteBorderIcon />,
     isTypeNumber: true,
+    name: 'power',
   },
 ];
 

@@ -7,10 +7,12 @@ const CustomInput = ({
   placeHolder,
   icon,
   isTypeNumber,
+  name,
 }: {
   placeHolder: string;
   icon: ReactNode;
   isTypeNumber: boolean;
+  name: string;
 }) => {
   const setFiltredPokList = useSetRecoilState(pokFilterValue);
 
@@ -19,8 +21,8 @@ const CustomInput = ({
   ) => {
     setFiltredPokList(
       !isTypeNumber || isNaN(e.target.value as unknown as number)
-        ? e.target.value
-        : +e.target.value
+        ? { name: name, val: e.target.value }
+        : { name: name, val: +e.target.value }
     );
   };
   return (
