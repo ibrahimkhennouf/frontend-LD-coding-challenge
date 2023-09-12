@@ -1,53 +1,53 @@
-import { DataGrid } from '@mui/x-data-grid';
-import './style.css';
+import { DataGrid } from "@mui/x-data-grid";
+import "./style.css";
 
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { filteredPokList, pageMetaData } from '../../recoil_state';
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { filteredPokList, pageMetaData } from "../../recoil_state";
 
 const columns = [
-  { field: 'id', headerName: 'ID', minWidth: 90, flex: 1 },
-  { field: 'name', headerName: 'name', minWidth: 200, flex: 1 },
-  { field: 'type', headerName: 'type', minWidth: 200, flex: 1 },
-  { field: 'hp', headerName: 'health', type: 'number', minWidth: 120, flex: 1 },
+  { field: "id", headerName: "ID", minWidth: 90, flex: 1 },
+  { field: "name", headerName: "name", minWidth: 200, flex: 1 },
+  { field: "type", headerName: "type", minWidth: 200, flex: 1 },
+  { field: "hp", headerName: "health", type: "number", minWidth: 120, flex: 1 },
   {
-    field: 'attack',
-    headerName: 'attack',
-    type: 'number',
+    field: "attack",
+    headerName: "attack",
+    type: "number",
     minWidth: 120,
     flex: 1,
   },
   {
-    field: 'defense',
-    headerName: 'defense',
-    type: 'number',
+    field: "defense",
+    headerName: "defense",
+    type: "number",
     minWidth: 130,
     flex: 1,
   },
   {
-    field: 'special_attack',
-    headerName: 'special_attack',
-    type: 'number',
+    field: "special_attack",
+    headerName: "special_attack",
+    type: "number",
     minWidth: 160,
     flex: 1,
   },
   {
-    field: 'special_defense',
-    headerName: 'special_defense',
-    type: 'number',
+    field: "special_defense",
+    headerName: "special_defense",
+    type: "number",
     minWidth: 180,
     flex: 1,
   },
   {
-    field: 'speed',
-    headerName: 'speed',
-    type: 'number',
+    field: "speed",
+    headerName: "speed",
+    type: "number",
     minWidth: 120,
     flex: 1,
   },
   {
-    field: 'power',
-    headerName: 'power',
-    type: 'number',
+    field: "power",
+    headerName: "power",
+    type: "number",
     minWidth: 120,
     flex: 1,
   },
@@ -62,7 +62,7 @@ export default function DataTable() {
   };
 
   return (
-    <div className='table--container'>
+    <div className="table--container">
       <DataGrid
         rows={poksList}
         columns={columns}
