@@ -14,3 +14,7 @@
 .searchBar--inp > * {
   flex: 1;
 }
+
+.css-gl260s-MuiDataGrid-columnHeadersInner {
+  background-color: #f3f3f3;
+}
