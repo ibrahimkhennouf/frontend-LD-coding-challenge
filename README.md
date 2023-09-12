@@ -1,8 +1,11 @@
-# React + Vite
+# frontend-LD-coding-challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the solution for the LD front end challenge.
 
-Currently, two official plugins are available:
+#PS:
+please note that there is 2 branches the main branch with typescript the other is with JS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#instructions
+install : yarn install
+run : yarn dev
+
