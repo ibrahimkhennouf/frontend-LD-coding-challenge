@@ -1,8 +1,9 @@
-import { atom, selector } from "recoil";
+import { atom, selector } from 'recoil';
+import { filterPok } from './utils';
 
 const poksListState = atom({
-  key: "poksListState",
-  default: fetch("/pokemon.json")
+  key: 'poksListState',
+  default: fetch('/pokemon.json')
     .then((res) => res.json())
     .then((data) =>
       data.map((pok) => ({
@@ -19,26 +20,21 @@ const poksListState = atom({
 });
 
 const pageMetaData = atom({
-  key: "pageMetaData",
+  key: 'pageMetaData',
   default: { page: 0, pageSize: 5 },
 });
 
 const pokFilterValue = atom({
-  key: "pokFilterValue",
-  default: { name: "name", val: "" },
+  key: 'pokFilterValue',
+  default: { name: 'name', val: '' },
 });
 
 const filteredPokList = selector({
-  key: "filteredPokList",
+  key: 'filteredPokList',
   get: ({ get }) => {
     const list = get(poksListState);
     const { name, val } = get(pokFilterValue);
-
-    if (["name", "type"].includes(name) && typeof val === "string") {
-      return list.filter((pok) => pok[name].includes(val));
-    } else {
-      return list.filter((pok) => pok[name] >= val);
-    }
+    return filterPok(list, name, val);
   },
 });
 
